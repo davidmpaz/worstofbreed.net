@@ -1,0 +1,108 @@
+---
+const statuses = [
+{ 
+    id: 'BURN', 
+    label: 'BURN WITH FIRE', 
+    icon: '💀', 
+    color: '#ff0055', 
+    desc: 'Active danger to life, health, and sanity. Remove immediately.' 
+  },
+{ 
+    id: 'CONTAIN', 
+    label: 'CONTAINMENT BREACH', 
+    icon: '☣️', 
+    color: '#ff6600', 
+    desc: 'It is too late. It is everywhere in the company. We can only isolate it (Strangler Fig Pattern), but no longer kill it.' 
+  },
+{ 
+    id: 'RESUME', 
+    label: 'RESUME ONLY', 
+    icon: '🤡', 
+    color: '#e6c300', 
+    desc: 'Looks great, fun at conferences, but please never use in production if you want to sleep at night.' 
+  },
+  { 
+    id: 'DESPAIR', 
+    label: 'DESPAIR', 
+    icon: '🚬', 
+    color: '#888', 
+    desc: 'We have accepted that we must live with it. Total resignation.' 
+  }
+];
+---
+
+<div class="legend-container">
+    <span class="legend-title">// THREAT LEVEL REFERENCE</span>
+    
+    <div class="legend-grid">
+        {statuses.map(status => (
+            <div class="legend-item" style={`border-color: ${status.color}`}>
+                <div class="legend-header" style={`background: ${status.color}`}>
+                    <span class="icon">{status.icon}</span>
+                    <span class="label">{status.label}</span>
+                </div>
+                <div class="legend-desc">
+                    {status.desc}
+                </div>
+            </div>
+        ))}
+    </div>
+</div>
+
+<style>
+    .legend-container {
+        font-family: 'Space Mono', monospace;
+        margin-bottom: 30px;
+        border: 2px solid #111;
+        padding: 15px;
+        background: #fff;
+        box-shadow: 8px 8px 0 rgba(0,0,0,0.1);
+    }
+
+    .legend-title {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 15px;
+        font-size: 0.8rem;
+        opacity: 0.6;
+    }
+
+    .legend-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+
+    .legend-item {
+        border: 2px solid; /* Farbe kommt inline */
+        background: #fafafa;
+    }
+
+    .legend-header {
+        color: #fff; /* Text auf Farbe immer weiß */
+        padding: 8px;
+        font-weight: bold;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-shadow: 1px 1px 0 #000;
+        border-bottom: 2px solid #111;
+    }
+
+    .icon { font-size: 1.2rem; }
+
+    .legend-desc {
+        padding: 8px;
+        font-size: 0.75rem;
+        color: #111;
+        font-weight: bold;
+    }
+
+    /* Mobile Anpassung */
+    @media (max-width: 600px) {
+        .legend-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+</style>

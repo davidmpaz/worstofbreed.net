@@ -1,16 +1,209 @@
 ---
-
+import Layout from "../layouts/Layout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Home">
+    <div class="intro">
+        <h2>We make bad software.</h2>
+        <p>
+            Welcome to the premier destination for Resume-Driven Development,
+            Over-Engineering, and Resume-Padding. Why build simple solutions
+            when you can build a distributed monolith managed by 4 different
+            committees?
+        </p>
+    </div>
+
+    <div class="grid">
+        <a href="/patterns" class="card">
+            <div class="card-header">
+                <h3>Design Patterns</h3>
+                <span class="icon">🏗️</span>
+            </div>
+            <p>
+                Discover the architectural patterns that ensure job security.
+                From "Distributed Monolith" to "Database as IPC", these are the
+                blueprints for eternal maintenance.
+            </p>
+            <div class="cta">Go to Hell &rarr;</div>
+        </a>
+
+        <a href="/radar" class="card">
+            <div class="card-header">
+                <h3>Tech Radar</h3>
+                <span class="icon">☢️</span>
+            </div>
+            <p>
+                A curated list of technologies that should be illegal. We track
+                the industry's most successful cargo cults and zombie
+                frameworks.
+            </p>
+            <div class="cta">Get Radiated &rarr;</div>
+        </a>
+    </div>
+
+    <div class="testimonials">
+        <h3>What "Experts" Say</h3>
+        <div class="testimonial-grid">
+            <blockquote class="quote">
+                "Thanks to Worst of Breed, we successfully migrated our 500-line
+                PHP script to a Kubernetes cluster with 12 microservices.
+                Latency increased by 4000%, but our resume value skyrocketed!"
+                <cite>— Senior Enterprise Architect @ Fortune 500 Company</cite>
+            </blockquote>
+            <blockquote class="quote">
+                "Finally, a framework that understands that complexity IS the
+                product. We now spend 90% of our time configuring YAML and 10%
+                coding. Perfection."
+                <cite>— Lead DevOps Ninja Rockstar</cite>
+            </blockquote>
+        </div>
+    </div>
+
+    <div class="manifesto">
+        <h3>Our Manifesto</h3>
+        <ul>
+            <li>COMPLEXITY over Simplicity</li>
+            <li>PROCESS over People</li>
+            <li>TOOLS over Solutions</li>
+            <li>RESUME over Value</li>
+        </ul>
+        <p class="signature">// We are Worst of Breed.</p>
+    </div>
+</Layout>
+
+<style>
+    .intro {
+        margin-bottom: 4rem;
+        border-bottom: 4px solid #000;
+        padding-bottom: 2rem;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        background: black;
+        color: white;
+        display: inline-block;
+        padding: 0.5rem 1rem;
+    }
+
+    .card {
+        background: #fff;
+        border: 4px solid #000;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        transition:
+            transform 0.2s,
+            box-shadow 0.2s;
+        text-decoration: none; /* override layout a style */
+        height: 100%;
+        box-sizing: border-box;
+    }
+
+    .card:hover {
+        transform: translate(-5px, -5px);
+        box-shadow: 8px 8px 0px #ff00ff;
+        background: #fff; /* override layout a:hover */
+    }
+
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 2px dashed #ccc;
+        padding-bottom: 1rem;
+    }
+
+    .card h3 {
+        margin: 0;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+    }
+
+    .icon {
+        font-size: 2rem;
+    }
+
+    .cta {
+        margin-top: auto;
+        font-weight: bold;
+        text-align: right;
+        color: #ff00ff;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 4rem;
+        margin-bottom: 4rem;
+    }
+
+    .testimonials {
+        margin: 4rem 0;
+    }
+
+    .testimonials h3 {
+        text-transform: uppercase;
+        border-bottom: 2px solid #000;
+        display: inline-block;
+        margin-bottom: 2rem;
+    }
+
+    .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    .quote {
+        border-left: 8px solid #ff00ff;
+        padding-left: 1rem;
+        margin: 0;
+        background: #fff;
+        padding: 1.5rem;
+        font-style: italic;
+    }
+
+    .quote cite {
+        display: block;
+        margin-top: 1rem;
+        font-weight: bold;
+        font-style: normal;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        color: #666;
+    }
+
+    .manifesto {
+        margin-top: 5rem;
+        border: 2px solid #000;
+        padding: 2rem;
+        background: #f4f4f4;
+    }
+
+    .manifesto h3 {
+        text-transform: uppercase;
+        border-bottom: 2px solid #000;
+        display: inline-block;
+    }
+
+    .manifesto ul {
+        list-style: none;
+        padding: 0;
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin: 2rem 0;
+    }
+
+    .manifesto li::before {
+        content: "[!] ";
+        color: #ff00ff;
+    }
+
+    .signature {
+        font-family: monospace;
+        color: #666;
+    }
+</style>

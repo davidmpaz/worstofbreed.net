@@ -1,0 +1,40 @@
+import { defineCollection, z } from 'astro:content';
+import { date } from 'astro:schema';
+
+const cardsCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    category: z.enum(['Architecture', 'Process', 'Legacy', 'Culture', 'AI', 'Code', 'Security', 'Infra', 'Frontend']),
+    imagePlaceholder: z.string().optional(),
+    stats: z.object({
+      latency: z.number().min(0).max(100),
+      pain: z.number().min(0).max(100),
+      maintainability: z.number().min(0).max(100),
+      resumeValue: z.string(),
+    }),
+    specialAbility: z.object({
+      name: z.string(),
+      description: z.string(),
+    }),
+    quote: z.string(),
+  }),
+});
+
+const blipsCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    name: z.string(),
+    quadrant: z.number().min(1).max(4),
+    status: z.enum(['BURN', 'CONTAINMENT', 'RESUME', 'DESPAIR']),
+    x: z.number(),
+    y: z.number(),
+    dateAdded: date().optional(),
+    edition: z.string().optional(),
+  }),
+});
+
+export const collections = {
+  'cards': cardsCollection,
+  'blips': blipsCollection,
+};

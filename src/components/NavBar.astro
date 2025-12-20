@@ -1,0 +1,100 @@
+---
+const pathname = Astro.url.pathname;
+
+// Helper um zu prüfen, ob ein Link aktiv ist
+// Wir entfernen Trailing Slashes für den Vergleich, um "Fuzzy Matches" zu vermeiden
+const cleanPath = pathname.replace(/\/$/, "");
+
+const navItems = [
+  {
+    label: "Design Patterns",
+    path: `/patterns`,
+    isActive: cleanPath === `/patterns`,
+  },
+  //   {
+  //     label: 'RUBE GOLDBERG AUTOMATION',
+  //     path: `/automation`,
+  //     isActive: cleanPath.startsWith(`/automation`)
+  //   },
+  {
+    label: "Tech Horror Radar",
+    path: `/radar`,
+    isActive: cleanPath.startsWith(`/radar`),
+  },
+];
+---
+
+<nav class="brutalist-nav">
+  {
+    navItems.map((item) => (
+      <a href={item.path} class={`nav-item ${item.isActive ? "active" : ""}`}>
+        <span class="bracket">[</span>
+        {item.label}
+        <span class="bracket">]</span>
+      </a>
+    ))
+  }
+</nav>
+
+<style>
+  /* --- BRUTALIST NAV STYLES --- */
+  .brutalist-nav {
+    display: flex;
+    flex-wrap: wrap; /* Auf Mobile umbrechen */
+    border: 4px solid #111;
+    background: #fff;
+    margin-bottom: 40px;
+    box-shadow: 8px 8px 0 #666;
+    font-family: "Space Mono", monospace;
+  }
+
+  .nav-item {
+    flex: 1; /* Alle gleich breit */
+    text-align: center;
+    padding: 15px 10px;
+    text-decoration: none;
+    color: #111;
+    font-weight: bold;
+    border-right: 4px solid #111;
+    min-width: 200px; /* Damit es auf Mobile nicht zu eng wird */
+    transition: all 0.1s;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+  }
+
+  /* Der letzte darf keinen Rahmen rechts haben */
+  .nav-item:last-child {
+    border-right: none;
+  }
+
+  /* Hover Effekt: Neon */
+  .nav-item:hover {
+    background: #ff00ff;
+    color: #000;
+  }
+
+  /* Active State: Invertiert (Schwarz auf Weiß) */
+  .nav-item.active {
+    background: #111;
+    color: #fff;
+    pointer-events: none; /* Klickbar machen sinnlos */
+  }
+
+  .nav-item.active:hover {
+    background: #111; /* Kein Hover beim aktiven Item */
+  }
+
+  /* Die Klammern [] verstecken wir normalerweise, zeigen sie aber beim Hover/Active */
+  .bracket {
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .nav-item:hover .bracket,
+  .nav-item.active .bracket {
+    opacity: 1;
+    color: #ff00ff;
+  }
+  .nav-item.active .bracket {
+    color: #fff;
+  } /* Bei Active weiß */
+</style>

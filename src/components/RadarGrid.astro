@@ -1,0 +1,396 @@
+---
+// src/components/RadarGrid.astro
+import { getCollection } from "astro:content";
+
+const blipsRaw = await getCollection("blips");
+
+// Wir müssen den Content für jeden Blip rendern
+const blips = await Promise.all(
+  blipsRaw.map(async (entry) => {
+    const { Content } = await entry.render();
+    return {
+      ...entry.data,
+      id: entry.slug, // Use slug as ID for highlighting
+      Content, // The rendered markdown component
+      // Map data to expected format if needed, but schema matches mostly
+    };
+  }),
+);
+
+const statusMap = {
+  BURN: { icon: "💀", color: "#ff0055", label: "BURN WITH FIRE" },
+  CONTAINMENT: { icon: "☣️", color: "#ff6600", label: "CONTAINMENT BREACH" },
+  RESUME: { icon: "🤡", color: "#e6c300", label: "RESUME ONLY" },
+  DESPAIR: { icon: "🚬", color: "#888", label: "DESPAIR" },
+};
+
+// Helper
+// const getBlips = (quadNr: number) => blips.filter(b => b.quad === quadNr); // Unused currently
+---
+
+<div class="radar-layout">
+  <div class="radar-visual">
+    <div class="ring ring-burn"></div>
+    <div class="ring ring-contain"></div>
+    <div class="ring ring-resume"></div>
+    <div class="cross-x"></div>
+    <div class="cross-y"></div>
+
+    <span class="q-label q1-label">Resume-Driven Infrastructure (RDI)</span>
+    <span class="q-label q2-label">Zombie Tech</span>
+    <span class="q-label q3-label">Cargo Cults & Theater</span>
+    <span class="q-label q4-label">Footguns & Booby Traps</span>
+
+    {
+      blips.map((blip, i) => {
+        const style = statusMap[blip.status as keyof typeof statusMap];
+        // Positioning must be adjusted depending on the quadrant,
+        // as x/y should be relative to the center (0,0 is the middle)
+        // Here we calculate inline "CSS hacks" for positioning in the grid
+        let posStyle = "";
+        if (blip.quadrant === 1)
+          posStyle = `right: ${50 + blip.x / 2}%; bottom: ${50 + blip.y / 2}%;`; // Oben Links
+        if (blip.quadrant === 2)
+          posStyle = `left: ${50 + blip.x / 2}%; bottom: ${50 + blip.y / 2}%;`; // Oben Rechts
+        if (blip.quadrant === 3)
+          posStyle = `right: ${50 + blip.x / 2}%; top: ${50 + blip.y / 2}%;`; // Unten Links
+        if (blip.quadrant === 4)
+          posStyle = `left: ${50 + blip.x / 2}%; top: ${50 + blip.y / 2}%;`; // Unten Rechts
+
+        return (
+          <div
+            class="radar-blip"
+            style={posStyle}
+            data-id={blip.id}
+            data-color={style.color}
+          >
+            <span class="blip-icon">{style.icon}</span>
+            <span class="blip-num">{i + 1}</span>
+          </div>
+        );
+      })
+    }
+  </div>
+
+  <div class="radar-list">
+    {
+      blips.map((blip, i) => {
+        const style = statusMap[blip.status as keyof typeof statusMap];
+        return (
+          <details class="list-item" data-id={blip.id}>
+            <summary class="list-summary">
+              <div class="summary-left">
+                <span class="list-num" style={`background: ${style.color};`}>
+                  {i + 1}
+                </span>
+                <span class="list-title">{blip.name}</span>
+              </div>
+              <span class="list-icon">{style.icon}</span>
+            </summary>
+            <div class="list-content">
+              <div
+                class="badge"
+                style={`border-color: ${style.color}; color: ${style.color}`}
+              >
+                {style.label}
+              </div>
+              <div>
+                <blip.Content />
+              </div>
+            </div>
+          </details>
+        );
+      })
+    }
+  </div>
+</div>
+
+<script>
+  // Simple Vanilla JS Interaction
+  // Wir warten bis das DOM da ist
+  document.addEventListener("DOMContentLoaded", () => {
+    const visualBlips = document.querySelectorAll(".radar-blip");
+    const listItems = document.querySelectorAll(".list-item");
+
+    function setHighlight(id: any, active: boolean) {
+      // Blip im Radar finden
+      const blip = document.querySelector(`.radar-blip[data-id="${id}"]`);
+      // List Item finden
+      const item = document.querySelector(`.list-item[data-id="${id}"]`);
+
+      if (active) {
+        blip?.classList.add("highlight");
+        item?.classList.add("highlight");
+        // Farbe des Blips beim Highlight ändern (optional)
+        if (blip)
+          (blip as HTMLElement).style.backgroundColor = (
+            blip as HTMLElement
+          ).dataset.color!;
+      } else {
+        blip?.classList.remove("highlight");
+        item?.classList.remove("highlight");
+        if (blip) (blip as HTMLElement).style.backgroundColor = ""; // Reset
+      }
+    }
+
+    // Event Listeners für Radar Blips
+    visualBlips.forEach((blip) => {
+      blip.addEventListener("mouseenter", () =>
+        setHighlight((blip as HTMLElement).dataset.id, true),
+      );
+      blip.addEventListener("mouseleave", () =>
+        setHighlight((blip as HTMLElement).dataset.id, false),
+      );
+    });
+
+    // Event Listeners für List Items (Summary Bereich)
+    listItems.forEach((item) => {
+      const summary = item.querySelector("summary");
+      if (summary) {
+        summary.addEventListener("mouseenter", () =>
+          setHighlight((item as HTMLElement).dataset.id, true),
+        );
+        summary.addEventListener("mouseleave", () =>
+          setHighlight((item as HTMLElement).dataset.id, false),
+        );
+      }
+    });
+  });
+</script>
+
+<style>
+  :root {
+    --radar-bg: #f4f4f4;
+    --border-color: #111;
+    --grid-size: 600px; /* Größe des Radars */
+  }
+
+  .radar-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    font-family: "Space Mono", monospace;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* --- RADAR VISUAL (LINKS) --- */
+  .radar-visual {
+    width: var(--grid-size);
+    height: var(--grid-size);
+    border: 4px solid var(--border-color);
+    background: var(--radar-bg);
+    position: relative;
+    overflow: hidden; /* Damit Ringe nicht überstehen */
+    flex-shrink: 0;
+  }
+
+  /* Die Ringe */
+  .ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px dashed #bbb; /* Dezentere Ringe */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none; /* Klicks gehen durch */
+    z-index: 1;
+  }
+  .ring-burn {
+    width: 30%;
+    height: 30%;
+    background: rgba(255, 0, 85, 0.05);
+    border-color: #ff0055;
+  }
+  .ring-contain {
+    width: 60%;
+    height: 60%;
+    border-color: #ff6600;
+  }
+  .ring-resume {
+    width: 90%;
+    height: 90%;
+    border-color: #e6c300;
+  }
+
+  /* Achsen */
+  .cross-x,
+  .cross-y {
+    position: absolute;
+    background: var(--border-color);
+    z-index: 2;
+    pointer-events: none;
+  }
+  .cross-x {
+    width: 100%;
+    height: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .cross-y {
+    height: 100%;
+    width: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Labels */
+  .q-label {
+    position: absolute;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    pointer-events: none;
+  }
+  .q1-label {
+    top: 10px;
+    left: 10px;
+  }
+  .q2-label {
+    top: 10px;
+    right: 10px;
+  }
+  .q3-label {
+    bottom: 10px;
+    left: 10px;
+  }
+  .q4-label {
+    bottom: 10px;
+    right: 10px;
+  }
+
+  /* Blips */
+  .radar-blip {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    /* Da wir x/y im HTML berechnen, zentrieren wir hier nur das Element selbst */
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border: 2px solid #000;
+    border-radius: 50%; /* Oder 0 für eckig */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+    transition:
+      transform 0.2s,
+      background-color 0.2s;
+  }
+
+  .blip-icon {
+    display: none; /* Icon nur beim Hover oder Desktop? Hier lieber nur Zahl */
+  }
+  .blip-num {
+    font-size: 0.75rem;
+  }
+
+  /* Highlight State für Blip */
+  .radar-blip.highlight {
+    transform: translate(-50%, -50%) scale(1.5);
+    z-index: 20;
+    color: #fff;
+    border-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  .radar-blip.highlight .blip-num {
+    display: none;
+  }
+  .radar-blip.highlight .blip-icon {
+    display: block;
+    font-size: 1.2rem;
+  } /* Icon zeigen bei Highlight */
+
+  /* --- LISTE (RECHTS) --- */
+  .radar-list {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .list-item {
+    border: 2px solid var(--border-color);
+    background: #fff;
+    transition: transform 0.2s;
+  }
+
+  .list-item.highlight {
+    transform: translateX(-10px);
+    border-color: #ff00ff; /* Accent Color Highlight */
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .list-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    list-style: none; /* Standard-Dreieck weg */
+  }
+  .list-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .summary-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .list-num {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    color: #fff;
+    text-align: center;
+    line-height: 24px;
+    font-weight: bold;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    border: 1px solid #000;
+  }
+
+  .list-title {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .list-content {
+    padding: 10px 10px 10px 45px; /* Einrücken unter den Titel */
+    border-top: 1px dashed #ccc;
+    background: #fafafa;
+    font-size: 0.9rem;
+  }
+
+  .badge {
+    display: inline-block;
+    border: 1px solid;
+    padding: 2px 6px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+
+  /* --- MOBILE --- */
+  @media (max-width: 900px) {
+    .radar-visual {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1/1;
+    }
+    .radar-layout {
+      flex-direction: column;
+    }
+    .radar-list {
+      width: 100%;
+    }
+  }
+</style>
