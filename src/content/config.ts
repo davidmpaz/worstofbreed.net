@@ -1,7 +1,7 @@
 import { defineCollection, z } from 'astro:content';
 import { date } from 'astro:schema';
 
-const cardsCollection = defineCollection({
+const patternsCollection = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
@@ -35,6 +35,6 @@ const blipsCollection = defineCollection({
 });
 
 export const collections = {
-  'cards': cardsCollection,
+  'patterns': patternsCollection,
   'blips': blipsCollection,
 };

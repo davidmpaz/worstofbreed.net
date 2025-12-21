@@ -1,13 +1,19 @@
 ---
-const { entry } = Astro.props;
+const { entry, interactive = true, showContent = true } = Astro.props;
 const { data } = entry;
 const { title, category, stats, quote, specialAbility, imagePlaceholder } =
   data;
 
-const { Content } = await entry.render();
+let Content = null;
+if (showContent) {
+  const rendered = await entry.render();
+  Content = rendered.Content;
+}
+
+const flipClass = interactive ? "flip-container" : "static-card";
 ---
 
-<div class="flip-container">
+<div class={flipClass}>
   <div class="flipper">
     <article class="brutalist-card front" id="card-front">
       <header class="card-header">
@@ -53,18 +59,25 @@ const { Content } = await entry.render();
       </footer>
     </article>
 
-    <article class="brutalist-card back">
-      <header class="card-header invert">
-        <span>// ANALYSIS_LOG</span>
-      </header>
-      <div class="markdown-content">
-        <Content />
-      </div>
-      <footer class="card-footer invert">
-        <span class="desktop-hint">HOVER TO RETURN</span>
-        <span class="mobile-hint">TAP TO RETURN</span>
-      </footer>
-    </article>
+    {
+      showContent && Content && (
+        <article class="brutalist-card back">
+          <header class="card-header invert">
+            <span>// ANALYSIS_LOG</span>
+          </header>
+          <div class="markdown-content">
+            <Content />
+          </div>
+          <footer class="card-footer invert">
+            <span class="desktop-hint">HOVER TO RETURN</span>
+            <span class="mobile-hint">TAP TO RETURN</span>
+            <a href={`/patterns/${entry.slug}`} class="permalink-btn">
+              🔗 PERMALINK
+            </a>
+          </footer>
+        </article>
+      )
+    }
   </div>
 </div>
 
@@ -86,16 +99,31 @@ const { Content } = await entry.render();
       container.classList.toggle("flipped");
     });
   });
+
+  // Prevent flip when clicking the permalink
+  document.querySelectorAll(".permalink-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
+  });
 </script>
 
 <style>
-  .flip-container {
+  .flip-container,
+  .static-card {
     perspective: 1000px;
     width: 100%; /* Fluid width */
     max-width: 350px; /* Max width */
     aspect-ratio: 9/16; /* Social Media / Story format */
     position: relative;
+  }
+
+  .flip-container {
     cursor: pointer;
+  }
+
+  .static-card {
+    cursor: default;
   }
 
   /* Desktop: Hover to flip */
@@ -118,6 +146,11 @@ const { Content } = await entry.render();
     height: 100%;
   }
 
+  .static-card .flipper {
+    transform-style: flat; /* No 3D needed for static */
+    height: auto; /* Let content dictate height */
+  }
+
   .front,
   .back {
     width: 100%;
@@ -137,6 +170,12 @@ const { Content } = await entry.render();
     z-index: 2;
     transform: rotateY(0deg);
     pointer-events: auto;
+  }
+
+  .static-card .front {
+    position: relative; /* Restore flow for detail page */
+    height: auto; /* Allow growth if needed, or keep 100% if aspect ratio handles it */
+    min-height: 100%;
   }
 
   .back {
@@ -318,5 +357,21 @@ const { Content } = await entry.render();
     .mobile-hint {
       display: none;
     }
+  }
+
+  .permalink-btn {
+    margin-left: 10px;
+    color: var(--ink);
+    text-decoration: none;
+    background: var(--accent);
+    padding: 2px 5px;
+    font-weight: bold;
+    border: 1px solid var(--ink);
+    font-size: 0.6rem;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .permalink-btn:hover {
+    background: #fff;
   }
 </style>
