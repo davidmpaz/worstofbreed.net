@@ -14,9 +14,11 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { title } = entry.data;
 const { Content } = await entry.render();
+
+const ogImage = `/og/${entry.slug}.png`;
 ---
 
-<Layout title={title}>
+<Layout title={title} ogImage={ogImage}>
     <div class="detail-container">
         <div class="hero-section">
             <div class="card-wrapper">
