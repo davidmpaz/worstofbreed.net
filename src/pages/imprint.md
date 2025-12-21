@@ -11,7 +11,7 @@ Tammo van Lessen
 
 ## Contact
 
-Email: info@worstofbreed.net
+Email: info worstofbreed net
 
 ## Person responsible for editorial
 

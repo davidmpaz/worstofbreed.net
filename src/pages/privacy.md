@@ -36,4 +36,4 @@ For further details, please refer to Cloudflare's privacy policy: [https://www.c
 The responsible entity for data processing on this website is:
 
 Tammo van Lessen  
-Email: info@worstofbreed.net
+Email: info worstofbreed net
