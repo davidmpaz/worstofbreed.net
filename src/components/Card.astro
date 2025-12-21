@@ -1,8 +1,16 @@
 ---
 const { entry, interactive = true, showContent = true } = Astro.props;
 const { data } = entry;
-const { title, category, stats, quote, specialAbility, imagePlaceholder } =
-  data;
+const {
+  title,
+  category,
+  stats,
+  quote,
+  specialAbility,
+  imagePlaceholder,
+  dateAdded,
+  tags,
+} = data;
 
 let Content = null;
 if (showContent) {
@@ -11,6 +19,7 @@ if (showContent) {
 }
 
 const flipClass = interactive ? "flip-container" : "static-card";
+const formattedDate = dateAdded.toISOString().split("T")[0];
 ---
 
 <div class={flipClass} data-url={`/patterns/${entry.slug}`}>
@@ -76,6 +85,10 @@ const flipClass = interactive ? "flip-container" : "static-card";
           <header class="card-header invert">
             <span>// ANALYSIS_LOG</span>
           </header>
+          <div class="meta-tags invert">
+            <span>DATE: {formattedDate}</span>
+            <span>TAGS: {tags.join(", ")}</span>
+          </div>
           <div class="markdown-content">
             <Content />
           </div>
@@ -235,6 +248,20 @@ const flipClass = interactive ? "flip-container" : "static-card";
   }
 
   .invert {
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  .meta-tags {
+    padding: 10px 15px;
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    border-bottom: 2px solid var(--ink);
+    display: flex;
+    flex-direction: column;
+  }
+  .meta-tags.invert {
+    /* Should already inherit invert colors if parent has it, or we apply manually */
     background: var(--paper);
     color: var(--ink);
   }

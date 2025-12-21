@@ -12,6 +12,7 @@ specialAbility:
   description: "Checks in code that imports libraries that don't exist, just because Copilot suggested them."
 quote: "I don't understand the code, but I typed 'Make it work' and the error is gone. Deploy it!"
 tags: ["Culture", "AI", "Vibecoding"]
+dateAdded: 2025-12-21
 ---
 
 # Analysis

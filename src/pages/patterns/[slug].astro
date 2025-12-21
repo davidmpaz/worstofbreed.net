@@ -12,8 +12,10 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { title } = entry.data;
+const { title, dateAdded, tags } = entry.data;
 const { Content } = await entry.render();
+
+const formattedDate = dateAdded.toISOString().split("T")[0];
 
 const ogImage = `/og/${entry.slug}.png`;
 ---
@@ -51,6 +53,10 @@ const ogImage = `/og/${entry.slug}.png`;
             <header class="analysis-header">
                 <span>// ANALYSIS_LOG: {title}</span>
             </header>
+            <div class="analysis-meta">
+                <span>DATE: {formattedDate}</span>
+                <span>TAGS: {tags.join(", ")}</span>
+            </div>
             <div class="analysis-content">
                 <Content />
             </div>
@@ -207,6 +213,17 @@ const ogImage = `/og/${entry.slug}.png`;
         font-family: var(--font-mono);
         font-weight: bold;
         text-transform: uppercase;
+    }
+
+    .analysis-meta {
+        padding: 10px 20px;
+        background: #f0f0f0;
+        border-bottom: 2px solid var(--ink);
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
     }
 
     .analysis-content {

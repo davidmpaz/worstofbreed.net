@@ -11,6 +11,8 @@ specialAbility:
   name: "Training Data Donation"
   description: "Feeds the public ChatGPT with the secret M&A strategy and payroll lists to get 'a summary'."
 quote: "I posted the source code of our core system into the chat so it would write unit tests for me. That stays between us, right?"
+tags: ["Security", "AI", "Data"]
+dateAdded: 2025-12-21
 ---
 
 # Analysis

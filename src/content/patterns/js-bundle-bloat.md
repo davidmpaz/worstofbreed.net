@@ -11,6 +11,8 @@ specialAbility:
   name: "Mobile Battery Drain"
   description: "Drains an iPhone 15 battery in under 30 minutes just to display an 'About Us' page."
 quote: "We need React, Redux, GraphQL, Tailwind, three.js and Lodash. For the Landing Page. You never know."
+tags: ["Frontend", "JavaScript", "Performance"]
+dateAdded: 2025-12-21
 ---
 
 ## Analysis

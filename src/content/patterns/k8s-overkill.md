@@ -11,6 +11,8 @@ specialAbility:
   name: "YAML Fatigue"
   description: "To fix a typo in the HTML, 14 YAML manifests must pass through a CI/CD pipeline that updates 3 clusters."
 quote: "We host our company blog on an HA Kubernetes cluster with Service Mesh and GitOps now. For scalability."
+dateAdded: 2025-12-21
+tags: ["Infra", "Kubernetes", "Cost"]
 ---
 
 ## Analysis

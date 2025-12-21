@@ -18,6 +18,8 @@ const patternsCollection = defineCollection({
       description: z.string(),
     }),
     quote: z.string(),
+    dateAdded: date(),
+    tags: z.array(z.string()),
   }),
 });
 
@@ -29,8 +31,8 @@ const blipsCollection = defineCollection({
     status: z.enum(['BURN', 'CONTAINMENT', 'RESUME', 'DESPAIR']),
     x: z.number(),
     y: z.number(),
-    dateAdded: date().optional(),
-    edition: z.string().optional(),
+    dateAdded: date(),
+    edition: z.string(),
   }),
 });
 

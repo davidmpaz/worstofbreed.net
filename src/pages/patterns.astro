@@ -4,7 +4,11 @@ import Card from "../components/Card.astro";
 import Layout from "../layouts/Layout.astro";
 import ContributionCta from "../components/ContributionCta.astro";
 
-const allCards = await getCollection("patterns");
+const allCards = (await getCollection("patterns")).sort(
+    (a, b) => b.data.dateAdded.getTime() - a.data.dateAdded.getTime(),
+);
+
+const allTags = [...new Set(allCards.flatMap((card) => card.data.tags))].sort();
 ---
 
 <Layout title="Worst Patterns">
@@ -16,16 +20,93 @@ const allCards = await getCollection("patterns");
         // LOADED_MODULES: {allCards.length} PATTERNS
     </p>
 
-    <div class="grid">
-        {allCards.map((card) => <Card entry={card} />)}
+    <div class="filter-bar">
+        <span>// FILTER_BY_TAG:</span>
+        <div class="tags">
+            <button class="tag-btn active" data-filter="all">ALL</button>
+            {
+                allTags.map((tag) => (
+                    <button class="tag-btn" data-filter={tag}>
+                        {tag}
+                    </button>
+                ))
+            }
+        </div>
+    </div>
+
+    <div class="grid" id="patterns-grid">
+        {
+            allCards.map((card) => (
+                <div
+                    class="pattern-wrapper"
+                    data-tags={JSON.stringify(card.data.tags)}
+                >
+                    <Card entry={card} />
+                </div>
+            ))
+        }
     </div>
 
     <ContributionCta />
 </Layout>
+
+<script>
+    const buttons = document.querySelectorAll(".tag-btn");
+    const items = document.querySelectorAll(".pattern-wrapper");
+
+    buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            // activate button
+            buttons.forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            const filter = btn.getAttribute("data-filter");
+
+            items.forEach((item) => {
+                const tags = JSON.parse(item.getAttribute("data-tags") || "[]");
+                if (filter === "all" || tags.includes(filter)) {
+                    (item as HTMLElement).style.display = "block";
+                } else {
+                    (item as HTMLElement).style.display = "none";
+                }
+            });
+        });
+    });
+</script>
+
 <style>
     .grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: 3rem;
+    }
+
+    .filter-bar {
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px dashed var(--ink);
+    }
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+    }
+
+    .tag-btn {
+        background: transparent;
+        border: 1px solid var(--ink);
+        padding: 5px 10px;
+        font-family: var(--font-mono);
+        text-transform: uppercase;
+        cursor: pointer;
+        font-size: 0.8rem;
+    }
+
+    .tag-btn:hover,
+    .tag-btn.active {
+        background: var(--ink);
+        color: var(--paper);
     }
 </style>

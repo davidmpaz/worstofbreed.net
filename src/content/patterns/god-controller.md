@@ -11,6 +11,8 @@ specialAbility:
   name: "Cyclomatic Complexity of 9000"
   description: "A single method has 45 nested if/else blocks and is 3,000 lines long."
 quote: "Just put the logic in the 'OrderController' for now. We'll refactor it later. Promised."
+tags: ["Code", "Architecture", "Maintenance"]
+dateAdded: 2025-12-21
 ---
 
 ## Analysis

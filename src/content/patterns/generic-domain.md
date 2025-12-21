@@ -11,7 +11,8 @@ specialAbility:
   name: "The EAV (Entity-Attribute-Value) Nightmare"
   description: "All data lands in one table with three columns: EntityID, Key, Value. SQL queries are now 4 pages long."
 quote: "We build the system totally flexible! We don't know what the customer needs yet, so we make everything generically configurable."
-tags: ["DDD"]
+tags: ["DDD", "Architecture", "Maintenance"]
+dateAdded: 2025-12-21
 ---
 
 ## Analysis

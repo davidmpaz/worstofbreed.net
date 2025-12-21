@@ -11,7 +11,8 @@ specialAbility:
   name: "The Friday Afternoon Deployment"
   description: "An automatic deployment on Friday at 5:00 PM destroys the Prod environment. The Ops team is already on weekend."
 quote: "We are doing DevOps now! The developers write Dockerfiles and the Ops team operates Jenkins, which cannot build the Dockerfiles."
-tags: ["DevOps"]
+tags: ["DevOps", "Culture", "Maintenance"]
+dateAdded: 2025-12-21
 ---
 
 ## Analysis

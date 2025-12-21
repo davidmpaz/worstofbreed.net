@@ -11,6 +11,8 @@ specialAbility:
   name: "The Offset Reset Disaster"
   description: "A new consumer reads 'from beginning' by mistake and processes all orders from the last 5 years again."
 quote: "We don't need a database anymore. Kafka is our 'Source of Truth'. We store the entire state in the log."
+tags: ["Architecture", "Event Sourcing", "Kafka"]
+dateAdded: 2025-12-21
 ---
 
 ## Analysis

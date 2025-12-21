@@ -12,6 +12,7 @@ specialAbility:
   description: "The chatbot promises the customer 1€ cars and then insults the CEO, all in grammatically perfect language."
 quote: "We are replacing the entire marketing team and support with AI agents. What could go wrong?"
 tags: ["AI", "Content", "Ethics"]
+dateAdded: 2025-12-21
 ---
 
 # Analysis

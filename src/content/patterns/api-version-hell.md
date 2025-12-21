@@ -11,6 +11,8 @@ specialAbility:
   name: "Breaking Change Roulette"
   description: "A client accidentally uses v12 but expects the data format of v14. The backend crashes with a NullPointer."
 quote: "We make a new version for every small change. That is 'agile' and 'backward compatible'."
+dateAdded: 2025-12-21
+tags: ["Architecture", "API", "Maintenance"]
 ---
 
 ## Analysis

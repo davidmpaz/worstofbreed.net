@@ -11,6 +11,8 @@ specialAbility:
   name: "Cold Start Chain Reaction"
   description: "The first request in the morning takes 45 seconds because 18 functions have to spin up one after another."
 quote: "Serverless is the future! We have broken everything down into 300 nanoscopic functions. It scales infinitely!"
+tags: ["Architecture", "Serverless", "Cost"]
+dateAdded: 2025-12-21
 ---
 
 ## Analysis

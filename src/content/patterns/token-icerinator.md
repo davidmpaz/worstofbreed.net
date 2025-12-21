@@ -12,6 +12,7 @@ specialAbility:
   description: "Loads 50 PDFs and the complete database into the context for every 'Yes/No' question. Cost per request: $2.50."
 quote: "Why optimize vector databases? We have 2 million token context window now! Just shove everything in."
 tags: ["Cost", "AI"]
+dateAdded: 2025-12-21
 ---
 
 # Analysis

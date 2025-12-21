@@ -11,7 +11,8 @@ specialAbility:
   name: "The PI Planning Paralysis"
   description: "Every 10 weeks, 200 people are locked in a room for 2 days to make plans that are obsolete on the third day."
 quote: "We are agile now. We have 'Release Train Engineers' and do 'Inspect and Adapt'. But deployment still takes 6 months."
-tags: ["Process", "Culture"]
+tags: ["Process", "Culture", "Agile"]
+dateAdded: 2025-12-21
 ---
 
 # Analysis
