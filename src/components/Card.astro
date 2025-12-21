@@ -13,7 +13,7 @@ if (showContent) {
 const flipClass = interactive ? "flip-container" : "static-card";
 ---
 
-<div class={flipClass}>
+<div class={flipClass} data-url={`/patterns/${entry.slug}`}>
   <div class="flipper">
     <article class="brutalist-card front" id="card-front">
       <header class="card-header">
@@ -80,7 +80,7 @@ const flipClass = interactive ? "flip-container" : "static-card";
             <Content />
           </div>
           <footer class="card-footer invert">
-            <span class="desktop-hint">HOVER TO RETURN</span>
+            <span class="desktop-hint">HOVER OFF TO RETURN</span>
             <span class="mobile-hint">TAP TO RETURN</span>
             <a href={`/patterns/${entry.slug}`} class="permalink-btn">
               🔗 PERMALINK
@@ -98,6 +98,15 @@ const flipClass = interactive ? "flip-container" : "static-card";
 
   flipContainers.forEach((container) => {
     container.addEventListener("click", (e) => {
+      // Disable click-to-flip on devices that support hover
+      if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+        const url = container.getAttribute("data-url");
+        if (url) {
+          window.location.href = url;
+        }
+        return;
+      }
+
       // If we are about to flip this one OPEN (add class), we must close others first.
       // Actually strictly, just close everyone else regardless of whether we are opening or closing this one.
 
@@ -138,7 +147,7 @@ const flipClass = interactive ? "flip-container" : "static-card";
   }
 
   /* Desktop: Hover to flip */
-  @media (hover: hover) {
+  @media (hover: hover) and (pointer: fine) {
     .flip-container:hover .flipper {
       transform: rotateY(180deg);
     }
@@ -206,7 +215,7 @@ const flipClass = interactive ? "flip-container" : "static-card";
   }
 
   /* Desktop hover state logic for pointer events (optional/tricky, but CSS hover handles transform) */
-  @media (hover: hover) {
+  @media (hover: hover) and (pointer: fine) {
     .flip-container:hover .front {
       pointer-events: none;
     }
@@ -361,7 +370,7 @@ const flipClass = interactive ? "flip-container" : "static-card";
     display: inline;
   }
 
-  @media (hover: hover) {
+  @media (hover: hover) and (pointer: fine) {
     .desktop-hint {
       display: inline;
     }
