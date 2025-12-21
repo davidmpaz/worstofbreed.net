@@ -38,7 +38,9 @@ const { Content } = await entry.render();
                     >
                 </div>
                 <div class="navigation-box">
-                    <a href="/" class="back-link">&lt; RETURN TO BASE</a>
+                    <a href="/patterns" class="back-link"
+                        >&lt; RETURN TO PATTERNS</a
+                    >
                 </div>
             </div>
         </div>
@@ -110,6 +112,14 @@ const { Content } = await entry.render();
         /* Reset scale since it is static now */
         transform: none;
         flex-shrink: 0;
+        width: 100%;
+        max-width: 350px;
+        aspect-ratio: 9/16;
+    }
+
+    .card-wrapper :global(.flipper),
+    .card-wrapper :global(.front) {
+        height: 100% !important;
     }
 
     .share-section {
@@ -119,7 +129,6 @@ const { Content } = await entry.render();
         border: 2px solid var(--accent);
         max-width: 400px;
         width: 100%;
-        align-self: center;
     }
 
     h2 {
