@@ -13,7 +13,7 @@ specialAbility:
 quote: "Serverless is the future! We have broken everything down into 300 nanoscopic functions. It scales infinitely!"
 ---
 
-# Analysis
+## Analysis
 When "Functions as a Service" (FaaS) is misused as a replacement for any architecture. Instead of a coherent service, you have a swarm of functions that trigger each other via events.
 
 **The Reality:**

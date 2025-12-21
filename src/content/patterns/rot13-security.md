@@ -13,7 +13,7 @@ specialAbility:
 quote: "We encoded passwords with Base64. That is secure, right? At least it looks cryptic."
 ---
 
-# Analysis
+## Analysis
 "Security by Obscurity" or the total ignorance of cryptography. Data is "obfuscated" (encoded) instead of encrypted.
 
 **The Reality:**

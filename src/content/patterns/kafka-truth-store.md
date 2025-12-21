@@ -13,7 +13,7 @@ specialAbility:
 quote: "We don't need a database anymore. Kafka is our 'Source of Truth'. We store the entire state in the log."
 ---
 
-# Analysis
+## Analysis
 Event Sourcing is powerful, but using Kafka as the primary database for *everything* is brave.
 
 **The Reality:**

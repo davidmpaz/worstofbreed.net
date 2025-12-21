@@ -13,7 +13,7 @@ specialAbility:
 quote: "IT was too slow. The controlling intern built this in an afternoon in VBA. It works great!"
 ---
 
-# Analysis
+## Analysis
 Shadow IT in its purest form. A business-critical process depends on an Excel file lying on a network drive.
 
 **The Reality:**

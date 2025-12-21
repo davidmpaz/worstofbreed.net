@@ -13,5 +13,5 @@ specialAbility:
 quote: "Why call a method locally when you can send a synchronous HTTP request across three availability zones?"
 ---
 
-# Analysis
+## Analysis
 The result of taking a spaghetti code base and throwing it across the network. Now you have the same coupling, but with added network latency and serialization overhead.

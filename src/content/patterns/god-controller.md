@@ -13,7 +13,7 @@ specialAbility:
 quote: "Just put the logic in the 'OrderController' for now. We'll refactor it later. Promised."
 ---
 
-# Analysis
+## Analysis
 The classic "Smart UI" or "Anemic Domain Model" Anti-Pattern. Domains objects are just dumb data holders (Getter/Setter), and the entire business logic lives in a gigantic Service or Controller.
 
 **The Reality:**

@@ -13,7 +13,7 @@ specialAbility:
 quote: "We host our company blog on an HA Kubernetes cluster with Service Mesh and GitOps now. For scalability."
 ---
 
-# Analysis
+## Analysis
 The ultimate over-engineering. A problem that would be solved with an S3 bucket and CloudFront for $0.50 a month is beaten to death with infrastructure that costs $5000 and requires three dedicated admins.
 
 **The Reality:**

@@ -14,7 +14,7 @@ quote: "We build the system totally flexible! We don't know what the customer ne
 tags: ["DDD"]
 ---
 
-# Analysis
+## Analysis
 The fear of specific business decisions leads to a meta-model. Instead of `Customer` and `Order` there is `Thing` and `Relation`.
 
 **The Reality:**

@@ -14,7 +14,7 @@ quote: "We are doing DevOps now! The developers write Dockerfiles and the Ops te
 tags: ["DevOps"]
 ---
 
-# Analysis
+## Analysis
 When "DevOps" only means that new tools (Kubernetes, Jenkins, Terraform) have been introduced, but the culture and silos (Development vs. Operations) have remained the same.
 
 **The Reality:**

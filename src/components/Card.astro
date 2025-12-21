@@ -54,8 +54,19 @@ const flipClass = interactive ? "flip-container" : "static-card";
       </div>
 
       <footer class="card-footer">
-        <span class="desktop-hint">HOVER FOR ANALYSIS</span>
-        <span class="mobile-hint">TAP FOR ANALYSIS</span>
+        {
+          interactive ? (
+            <>
+              <span class="desktop-hint">HOVER FOR ANALYSIS</span>
+              <span class="mobile-hint">TAP FOR ANALYSIS</span>
+            </>
+          ) : (
+            <>
+              <span class="desktop-hint">worstofbreed.net</span>
+              <span class="mobile-hint">worstofbreed.net</span>
+            </>
+          )
+        }
       </footer>
     </article>
 
@@ -228,7 +239,7 @@ const flipClass = interactive ? "flip-container" : "static-card";
     overflow-y: auto;
   }
 
-  .markdown-content :global(h1) {
+  .markdown-content :global(h2) {
     font-size: 1.1rem;
     text-decoration: underline;
     margin-top: 0;

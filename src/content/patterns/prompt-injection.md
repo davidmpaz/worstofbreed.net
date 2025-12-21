@@ -13,7 +13,7 @@ specialAbility:
 quote: "We told the AI: 'Please never give out passwords.' That is our security concept. It is foolproof."
 ---
 
-# Analysis
+## Analysis
 The belief that a non-deterministic language model can be "secured" through natural language.
 
 **The Reality:**
