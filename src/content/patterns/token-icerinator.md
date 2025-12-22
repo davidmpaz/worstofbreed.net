@@ -13,9 +13,10 @@ specialAbility:
 quote: "Why optimize vector databases? We have 2 million token context window now! Just shove everything in."
 tags: ["Cost", "AI"]
 dateAdded: 2025-12-21
+author: "vanto"
 ---
 
-# Analysis
+## Analysis
 The naive approach to RAG (Retrieval Augmented Generation). Instead of searching for precise information, the model is pelted with data garbage in the hope that it finds the needle in the haystack.
 
 **The Reality:**

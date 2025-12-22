@@ -6,6 +6,7 @@ x: 50
 y: 60
 edition: "2025"
 dateAdded: 2025-12-21
+author: "vanto"
 ---
 We test the tests.
 

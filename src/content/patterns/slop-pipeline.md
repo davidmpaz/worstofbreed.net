@@ -13,9 +13,10 @@ specialAbility:
 quote: "We are replacing the entire marketing team and support with AI agents. What could go wrong?"
 tags: ["AI", "Content", "Ethics"]
 dateAdded: 2025-12-21
+author: "vanto"
 ---
 
-# Analysis
+## Analysis
 The massive use of generative AI without "Human in the Loop" to flood the internet or internal wikis with low-quality content ("Slop").
 
 **The Reality:**

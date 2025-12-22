@@ -13,6 +13,7 @@ specialAbility:
 quote: "We build the system totally flexible! We don't know what the customer needs yet, so we make everything generically configurable."
 tags: ["DDD", "Architecture", "Maintenance"]
 dateAdded: 2025-12-21
+author: "vanto"
 ---
 
 ## Analysis

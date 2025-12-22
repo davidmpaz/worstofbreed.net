@@ -13,9 +13,10 @@ specialAbility:
 quote: "I posted the source code of our core system into the chat so it would write unit tests for me. That stays between us, right?"
 tags: ["Security", "AI", "Data"]
 dateAdded: 2025-12-21
+author: "vanto"
 ---
 
-# Analysis
+## Analysis
 Shadow IT in the age of LLMs. Employees use unapproved, public AI tools to speed up their work, bypassing all DLP (Data Loss Prevention) measures.
 
 **The Reality:**

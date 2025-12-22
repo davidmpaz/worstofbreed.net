@@ -13,6 +13,7 @@ specialAbility:
 quote: "We need React, Redux, GraphQL, Tailwind, three.js and Lodash. For the Landing Page. You never know."
 tags: ["Frontend", "JavaScript", "Performance"]
 dateAdded: 2025-12-21
+author: "vanto"
 ---
 
 ## Analysis

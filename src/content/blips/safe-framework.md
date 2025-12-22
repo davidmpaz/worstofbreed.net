@@ -6,6 +6,7 @@ x: 5
 y: 10
 edition: "2025"
 dateAdded: 2025-12-21
+author: "vanto"
 ---
 Agile Waterfall with extra meetings.
 

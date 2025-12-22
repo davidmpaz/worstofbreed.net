@@ -16,7 +16,7 @@ dateAdded: 2025-12-21
 author: "vanto"
 ---
 
-# Analysis
+## Analysis
 The attempt to force agility into a hierarchical company with bureaucratic violence. Waterfall project management wrapped in new buzzwords.
 
 **The Reality:**

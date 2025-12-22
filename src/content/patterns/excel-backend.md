@@ -13,6 +13,7 @@ specialAbility:
 quote: "IT was too slow. The controlling intern built this in an afternoon in VBA. It works great!"
 tags: ["Process", "Culture", "Shadow IT"]
 dateAdded: 2025-12-21
+author: "vanto"
 ---
 
 ## Analysis

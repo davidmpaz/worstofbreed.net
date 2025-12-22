@@ -13,6 +13,7 @@ specialAbility:
 quote: "We don't need a database anymore. Kafka is our 'Source of Truth'. We store the entire state in the log."
 tags: ["Architecture", "Event Sourcing", "Kafka"]
 dateAdded: 2025-12-21
+author: "vanto"
 ---
 
 ## Analysis

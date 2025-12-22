@@ -13,6 +13,7 @@ specialAbility:
 quote: "We encoded passwords with Base64. That is secure, right? At least it looks cryptic."
 tags: ["Security", "Encryption"]
 dateAdded: 2025-12-21
+author: "vanto"
 ---
 
 ## Analysis

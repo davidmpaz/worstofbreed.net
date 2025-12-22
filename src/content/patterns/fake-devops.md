@@ -13,6 +13,7 @@ specialAbility:
 quote: "We are doing DevOps now! The developers write Dockerfiles and the Ops team operates Jenkins, which cannot build the Dockerfiles."
 tags: ["DevOps", "Culture", "Maintenance"]
 dateAdded: 2025-12-21
+author: "vanto"
 ---
 
 ## Analysis

@@ -13,10 +13,11 @@ specialAbility:
 quote: "Why build an API? Just write directly to the table 'T_TRANSFER_V2_TEMP', the other system polls there every 10 seconds."
 tags: ["Legacy", "Integration", "Database"]
 dateAdded: 2025-12-21
+author: "vanto"
 ---
 
-# Analysis
+## Analysis
 The ultimate Anti-Pattern of integration. Two or more systems that shouldn't know about each other share a database.
 
 **The Reality:**
-There is no schema ownership. No one dares to rename a column because a 12-year-old Perl script in the basement of the data center will stop breathing. Validation does not happen or (worse) is enforced by triggers and stored procedures that no one understands.
+There is no schema ownership. No one dares to rename a column because a 20-year-old COBOL script in the basement of the data center will stop breathing. Validation does not happen or (worse) is enforced by triggers and stored procedures that no one understands.

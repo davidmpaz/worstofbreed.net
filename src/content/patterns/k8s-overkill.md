@@ -13,6 +13,7 @@ specialAbility:
 quote: "We host our company blog on an HA Kubernetes cluster with Service Mesh and GitOps now. For scalability."
 dateAdded: 2025-12-21
 tags: ["Infra", "Kubernetes", "Cost"]
+author: "vanto"
 ---
 
 ## Analysis
