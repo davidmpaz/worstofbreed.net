@@ -2,6 +2,8 @@ import { defineConfig } from 'astro/config';
 
 import cloudflare from '@astrojs/cloudflare';
 
+import sitemap from '@astrojs/sitemap';
+
 export default defineConfig({
   site: 'https://worstofbreed.net',
   adapter: cloudflare(),
@@ -37,5 +39,5 @@ export default defineConfig({
         }
       }
     }
-  }]
+  }, sitemap()]
 });
