@@ -5,21 +5,31 @@ import { getCollection } from "astro:content";
 const patterns = await getCollection("patterns");
 const blips = await getCollection("blips");
 
-const contributors = new Set<string>();
+const contributors = new Map<string, { patterns: number; blips: number }>();
 
 patterns.forEach((p) => {
     if (p.data.author) {
-        contributors.add(p.data.author);
+        const current = contributors.get(p.data.author) || {
+            patterns: 0,
+            blips: 0,
+        };
+        current.patterns++;
+        contributors.set(p.data.author, current);
     }
 });
 
 blips.forEach((b) => {
     if (b.data.author) {
-        contributors.add(b.data.author);
+        const current = contributors.get(b.data.author) || {
+            patterns: 0,
+            blips: 0,
+        };
+        current.blips++;
+        contributors.set(b.data.author, current);
     }
 });
 
-const authors = Array.from(contributors).sort();
+const authors = Array.from(contributors.keys()).sort();
 ---
 
 <Layout title="Thanks">
@@ -33,21 +43,40 @@ const authors = Array.from(contributors).sort();
 
         <div class="contributors-grid">
             {
-                authors.map((author) => (
-                    <a
-                        href={`https://github.com/${author}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="contributor-card"
-                    >
-                        <img
-                            src={`https://github.com/${author}.png`}
-                            alt={author}
-                            loading="lazy"
-                        />
-                        <span>@{author}</span>
-                    </a>
-                ))
+                authors.map((author) => {
+                    const stats = contributors.get(author)!;
+                    return (
+                        <a
+                            href={`https://github.com/${author}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="contributor-card"
+                        >
+                            <img
+                                src={`https://github.com/${author}.png`}
+                                alt={author}
+                                loading="lazy"
+                            />
+                            <span>@{author}</span>
+                            <div class="stats">
+                                {stats.patterns > 0 && (
+                                    <span class="stat-badge">
+                                        {stats.patterns}
+                                        {stats.patterns !== 1
+                                            ? "Patterns"
+                                            : "Pattern"}
+                                    </span>
+                                )}
+                                {stats.blips > 0 && (
+                                    <span class="stat-badge">
+                                        {stats.blips}
+                                        {stats.blips !== 1 ? "Blips" : "Blip"}
+                                    </span>
+                                )}
+                            </div>
+                        </a>
+                    );
+                })
             }
         </div>
 
@@ -81,7 +110,7 @@ const authors = Array.from(contributors).sort();
 
     .contributors-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
         gap: var(--spacing-lg);
     }
 
@@ -116,6 +145,22 @@ const authors = Array.from(contributors).sort();
 
     .contributor-card span {
         font-weight: bold;
+        font-family: var(--font-mono);
+    }
+
+    .stats {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        font-size: 0.8rem;
+        text-align: center;
+        margin-top: 4px;
+    }
+
+    .stat-badge {
+        background: rgba(0, 0, 0, 0.05);
+        padding: 2px 8px;
+        border-radius: 12px;
         font-family: var(--font-mono);
     }
 
