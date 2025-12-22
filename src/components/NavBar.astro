@@ -1,8 +1,8 @@
 ---
 const pathname = Astro.url.pathname;
 
-// Helper um zu prüfen, ob ein Link aktiv ist
-// Wir entfernen Trailing Slashes für den Vergleich, um "Fuzzy Matches" zu vermeiden
+// Helper to check if a link is active
+// We remove trailing slashes for comparison to avoid "fuzzy matches"
 const cleanPath = pathname.replace(/\/$/, "");
 
 const navItems = [
@@ -45,7 +45,7 @@ const navItems = [
   /* --- BRUTALIST NAV STYLES --- */
   .brutalist-nav {
     display: flex;
-    flex-wrap: wrap; /* Auf Mobile umbrechen */
+    flex-wrap: wrap; /* Wrap on mobile */
     border: var(--border-thick);
     background: var(--paper);
     margin-bottom: var(--spacing-xl);
@@ -82,30 +82,29 @@ const navItems = [
     }
   }
 
-  /* Der letzte item hat nie einen border-bottom im gestapelten zustand, 
-     aber im desktop modus muss man aufpassen. */
+  /* The last item never has a border-bottom in the stacked state, 
+     but care must be taken in desktop mode. */
   .nav-item:last-of-type {
     border-bottom: none;
   }
 
-  /* Hover Effekt: Neon */
+  /* Hover effect: Neon */
   .nav-item:hover {
     background: var(--accent);
     color: #000;
   }
 
-  /* Active State: Invertiert (Schwarz auf Weiß) */
+  /* Active State: Inverted (Black on White) */
   .nav-item.active {
     background: var(--ink);
     color: var(--paper);
-    pointer-events: none; /* Klickbar machen sinnlos */
   }
 
   .nav-item.active:hover {
-    background: var(--ink); /* Kein Hover beim aktiven Item */
+    background: var(--ink); /* No hover on active item */
   }
 
-  /* Die Klammern [] verstecken wir normalerweise, zeigen sie aber beim Hover/Active */
+  /* We normally hide the brackets [], but show them on hover/active */
   .bracket {
     opacity: 0;
     transition: opacity 0.2s;
@@ -117,5 +116,5 @@ const navItems = [
   }
   .nav-item.active .bracket {
     color: var(--paper);
-  } /* Bei Active weiß */
+  } /* White when active */
 </style>
