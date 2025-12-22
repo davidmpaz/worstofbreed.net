@@ -6,7 +6,7 @@ stats:
   latency: 0
   pain: 100
   maintainability: 10
-  resumeValue: "SECURITY RESEARCHER"
+  resumeValue: "FIRED"
 specialAbility:
   name: "Role Elevation by Notepad"
   description: "An attacker changes 'role: user' to 'role: admin' in the Base64 payload. The backend accepts it without checking the signature."
