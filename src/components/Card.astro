@@ -1,10 +1,5 @@
 ---
-const {
-  entry,
-  interactive = true,
-  showContent = true,
-  fluid = false,
-} = Astro.props;
+const { entry, interactive = true, showContent = true } = Astro.props;
 const { data } = entry;
 const {
   title,
@@ -24,7 +19,7 @@ if (showContent) {
 }
 
 const flipClass = interactive ? "flip-container" : "static-card";
-const containerClass = `${flipClass} ${fluid ? "fluid" : ""}`;
+const containerClass = flipClass;
 const formattedDate = dateAdded.toISOString().split("T")[0];
 ---
 
@@ -153,14 +148,8 @@ const formattedDate = dateAdded.toISOString().split("T")[0];
     perspective: 1000px;
     width: 100%; /* Fluid width */
     max-width: 350px; /* Max width */
-    aspect-ratio: 9/16; /* Social Media / Story format */
+    min-height: 24rem;
     position: relative;
-  }
-
-  /* Fluid override logic */
-  :global(.fluid) {
-    aspect-ratio: auto !important;
-    height: auto !important;
   }
 
   .flip-container {
@@ -199,10 +188,6 @@ const formattedDate = dateAdded.toISOString().split("T")[0];
   .front,
   .back {
     width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
     backface-visibility: hidden;
     border: var(--border-thick);
     background: var(--paper);
@@ -215,11 +200,18 @@ const formattedDate = dateAdded.toISOString().split("T")[0];
     z-index: 2;
     transform: rotateY(0deg);
     pointer-events: auto;
+    position: relative; /* Front dictates height */
+    height: 100%; /* Or auto? 'height: 100%' works if flipper has height, but flipper gets height from front? 
+                     If front is relative, it gives height to flipper (if flipper is relative).
+                     Wait, if flipper is relative and front is relative, front drives flipper.
+                     So front should be min-height: 100% or just behave normally.
+                  */
+    min-height: 100%;
   }
 
   .static-card .front {
-    position: relative; /* Restore flow for detail page */
-    height: auto; /* Allow growth if needed, or keep 100% if aspect ratio handles it */
+    position: relative;
+    height: auto;
     min-height: 100%;
   }
 
@@ -229,6 +221,12 @@ const formattedDate = dateAdded.toISOString().split("T")[0];
     color: var(--paper);
     overflow: hidden;
     pointer-events: none; /* Initially not interactable */
+
+    /* Absolute position to overlay front without affecting height */
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
   }
 
   /* When flipped, swap pointer events */
@@ -285,6 +283,20 @@ const formattedDate = dateAdded.toISOString().split("T")[0];
     line-height: 1.4;
     flex-grow: 1;
     overflow-y: auto;
+    /* Ensure scrollbar is visible/usable */
+    scrollbar-width: thin;
+    scrollbar-color: var(--paper) var(--ink);
+  }
+
+  .markdown-content::-webkit-scrollbar {
+    width: 8px;
+  }
+  .markdown-content::-webkit-scrollbar-track {
+    background: var(--ink);
+  }
+  .markdown-content::-webkit-scrollbar-thumb {
+    background-color: var(--paper);
+    border: 2px solid var(--ink);
   }
 
   .markdown-content :global(h2) {
@@ -313,6 +325,7 @@ const formattedDate = dateAdded.toISOString().split("T")[0];
     font-size: 4rem;
     position: relative;
     background: #eee;
+    min-height: 80px; /* Ensure visual has some height */
   }
 
   .stats-grid {
