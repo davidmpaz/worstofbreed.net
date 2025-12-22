@@ -1,18 +1,17 @@
 ---
 layout: ../layouts/Layout.astro
-title: Impressum
+title: Imprint
 ---
 
 # Imprint
 
-## Information pursuant to § 5 TMG
+## Information pursuant to § 5 TMG and § 18 MStV
 
 Tammo van Lessen  
+Nordstraße 18a 
+55131 Mainz
+Germany
 
 ## Contact
 
-Email: info worstofbreed net
-
-## Person responsible for editorial
-
-Tammo van Lessen  
+Email: info at worstofbreed dot net

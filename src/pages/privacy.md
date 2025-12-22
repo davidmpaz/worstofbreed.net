@@ -30,10 +30,13 @@ Cloudflare processes data among other locations in the USA.
 
 For further details, please refer to Cloudflare's privacy policy: [https://www.cloudflare.com/privacypolicy/](https://www.cloudflare.com/privacypolicy/).
 
+### GitHub Avatars
+We display user profile pictures from GitHub (avatars.githubusercontent.com). When accessing these images, your browser connects to GitHub Inc. (USA), transmitting your IP address and device information. This is based on our legitimate interest in providing a visual and user-friendly experience (Art. 6 (1) (f) GDPR). GitHub is certified under the EU-U.S. Data Privacy Framework, ensuring an adequate level of data protection in 2025. For details, see GitHub’s Privacy Statement. 
+
 ## 3. General Notes and Mandatory Information
 
 ### Notice regarding the responsible entity
 The responsible entity for data processing on this website is:
 
 Tammo van Lessen  
-Email: info worstofbreed net
+Email: info at worstofbreed dot net
