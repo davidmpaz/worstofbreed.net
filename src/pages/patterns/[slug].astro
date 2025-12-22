@@ -22,43 +22,50 @@ const ogImage = `/og/${entry.slug}.png`;
 
 <Layout title={title} ogImage={ogImage}>
     <div class="detail-container">
-        <div class="hero-section">
-            <div class="card-wrapper">
-                <Card entry={entry} interactive={false} showContent={false} />
+        <div class="detail-grid">
+            <div class="card-column">
+                <Card
+                    entry={entry}
+                    interactive={false}
+                    showContent={false}
+                    fluid={true}
+                />
             </div>
 
-            <div class="share-section">
-                <h2>// SHARE_PROTOCOL</h2>
-                <div class="url-box">
-                    <input
-                        type="text"
-                        readonly
-                        value={Astro.url.href}
-                        id="share-url"
-                        class="url-input"
-                    />
-                    <button id="copy-btn" class="copy-btn"
-                        >COPY COORDINATES</button
-                    >
+            <div class="info-column">
+                <div class="analysis-container">
+                    <header class="analysis-header">
+                        <span>// ANALYSIS_LOG: {title}</span>
+                    </header>
+                    <div class="analysis-meta">
+                        <span>DATE: {formattedDate}</span>
+                        <span>TAGS: {tags.join(", ")}</span>
+                    </div>
+                    <div class="analysis-content">
+                        <Content />
+                    </div>
                 </div>
-                <div class="navigation-box">
-                    <a href="/patterns" class="back-link"
-                        >&lt; RETURN TO PATTERNS</a
-                    >
-                </div>
-            </div>
-        </div>
 
-        <div class="analysis-container">
-            <header class="analysis-header">
-                <span>// ANALYSIS_LOG: {title}</span>
-            </header>
-            <div class="analysis-meta">
-                <span>DATE: {formattedDate}</span>
-                <span>TAGS: {tags.join(", ")}</span>
-            </div>
-            <div class="analysis-content">
-                <Content />
+                <div class="share-section">
+                    <h2>// SHARE_PROTOCOL</h2>
+                    <div class="url-box">
+                        <input
+                            type="text"
+                            readonly
+                            value={Astro.url.href}
+                            id="share-url"
+                            class="url-input"
+                        />
+                        <button id="copy-btn" class="copy-btn"
+                            >COPY COORDINATES</button
+                        >
+                    </div>
+                    <div class="navigation-box">
+                        <a href="/patterns" class="back-link"
+                            >&lt; RETURN TO PATTERNS</a
+                        >
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -89,45 +96,44 @@ const ogImage = `/og/${entry.slug}.png`;
 
 <style>
     .detail-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 40px;
-        padding: 40px 20px;
-        min-height: 80vh;
+        width: 100%;
         max-width: 1200px;
         margin: 0 auto;
+        min-height: 80vh;
     }
 
-    .hero-section {
+    .detail-grid {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        gap: 30px;
+        gap: 20px;
+    }
+
+    .card-column {
         width: 100%;
+    }
+
+    .info-column {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
 
     @media (min-width: 900px) {
-        .hero-section {
-            flex-direction: row;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 60px;
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 40px;
+            align-items: start;
         }
-    }
 
-    .card-wrapper {
-        /* Reset scale since it is static now */
-        transform: none;
-        flex-shrink: 0;
-        width: 100%;
-        max-width: 350px;
-        aspect-ratio: 9/16;
-    }
+        .detail-container {
+            padding: 40px 20px;
+        }
 
-    .card-wrapper :global(.flipper),
-    .card-wrapper :global(.front) {
-        height: 100% !important;
+        .card-column {
+            position: sticky;
+            top: 20px;
+        }
     }
 
     .share-section {
@@ -135,8 +141,8 @@ const ogImage = `/og/${entry.slug}.png`;
         color: var(--paper);
         padding: 20px;
         border: 2px solid var(--accent);
-        max-width: 400px;
         width: 100%;
+        box-sizing: border-box;
     }
 
     h2 {
@@ -200,10 +206,10 @@ const ogImage = `/og/${entry.slug}.png`;
     /* Analysis Content Styling */
     .analysis-container {
         width: 100%;
-        max-width: 800px;
         background: var(--paper);
         border: 4px solid var(--ink);
         box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.2);
+        box-sizing: border-box;
     }
 
     .analysis-header {
