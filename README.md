@@ -44,6 +44,9 @@ To run this project locally, you'll need [Node.js](https://nodejs.org/) installe
 
 We encourage contributions! If you have identified a new "Worst of Breed" pattern or a blip for our satirical tech radar, please submit a Pull Request.
 
+> [!IMPORTANT]
+> Please read [TONALITY.md](TONALITY.md) before writing content! It defines the "Upper Management" persona, the cynical tone, and the "Resume-Driven Development" humor style required for this project.
+
 ### Adding a Pattern
 
 Patterns are the core content of the site. They are Markdown files located in `src/content/patterns/`.
