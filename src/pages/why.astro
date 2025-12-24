@@ -1,0 +1,144 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Why?">
+    <section class="content">
+        <h2>Why?</h2>
+
+        <p>
+            I work as a Principal Consultant at <a
+                href="https://innoq.com"
+                target="_blank"
+                aria-label="INNOQ">INNOQ</a
+            >, mostly on software architecture and custom software development.
+            We work together on all sorts of projects — from small reviews to
+            end-to-end delivery, and workshop formats like Modernization
+            Workshops, Eventstorming, or “Painstorming”. We love getting our
+            hands dirty alongside our clients’ teams, working as peers with
+            different roles and responsibilities.
+        </p>
+        <p>
+            Beyond the pure tech stack (Java, Spring Boot, Microservices, <a
+                href="https://scs-architecture.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Self-contained Systems">Self-contained Systems</a
+            >, Observability, CI/CD, K8s), I spend a lot of time on
+            Domain-Driven Design, decomposing applications, and Conway’s Law and
+            Team Topologies.
+        </p>
+
+        <p>
+            In a past life, I built BPEL engines (Apache ODE) and did academic
+            research on SOA and web services — experiences that still shape how
+            I look at systems today. Back then, I kept tripping over the term
+            'Best of Breed' and, in a moment of foresight (or cynicism),
+            registered <code>worstofbreed.net</code> in 2008. It gathered dust until
+            today.
+        </p>
+
+        <h3>Why now?</h3>
+
+        <p>
+            In our projects, we keep running into wild things that get in our
+            way — and in the way of our clients’ success. Organizations often
+            trip over their own feet. It impacts their success, and partly ours
+            too, since we really just want to help, enable, and ultimately
+            succeed together.
+        </p>
+
+        <p>
+            We've actually found <a href="/patterns/trust-me-jwt"
+                >The 'Trust Me' JWT Parser</a
+            > twice in code reviews.
+            <a href="/patterns/kafka-truth-store">The Kafka 'Truth' Store</a> is a
+            bit of a caricature, but we've seen the reality close enough.
+            <a href="/patterns/k8s-overkill">K8s for a Static Site</a> was a genuine
+            request from a client who hoped Kubernetes would bring 'efficiency' to
+            a 5-person team.
+            <a href="/patterns/generic-domain">The 'Generic' Domain Model</a> is a
+            common trap, often emerging because configuration really is easier than
+            fighting an overcomplicated release process — even though it only treats
+            the symptom, not the cause.
+        </p>
+
+        <p>
+            Sometimes the industry just spins its wheels, forgetting hard-earned
+            knowledge and reinventing flat tires — especially in the frontend
+            world with <a href="/patterns/js-bundle-bloat">The 8MB JS Bundle</a
+            >. Agile software development is great, but it only works when
+            there’s a real willingness for organizational change.
+            <a href="/patterns/safe-implementation">The SAFe Implementation</a> shows
+            what happens when you try to bypass that. And let's not forget the AI
+            bubble, giving us <a href="/patterns/vibecoding-dev"
+                >The Vibecoding Dev</a
+            > who has lost track of what the code actually does, or <a
+                href="/patterns/god-mode-mcp">The 'God Mode' MCP Server</a
+            > using protocols for things they definitely weren't meant for (and all
+            the security issues that come with it).
+        </p>
+
+        <p>
+            I felt it was time to collect these stories and share them with a
+            bit of humor and exaggeration — not to mock teams, but to make
+            recurring patterns easier to spot and talk about. I hope for many
+            contributions!
+        </p>
+
+        <p>
+            The Tech Horror Radar is, of course, inspired by ThoughtWorks’ Tech
+            Radar, which is a genuinely valuable resource. But a 'negative'
+            radar can be valuable too, right? The categories <code
+                >BURN WITH FIRE</code
+            >, <code>CONTAINMENT BREACH</code>, <code>RESUME ONLY</code>, and <code
+                >DESPAIR</code
+            > are meant to give direct recommendations on how to handle these patterns
+            if you spot them in your own context. With enough Blip contributions,
+            we’d love to publish more editions over time.
+        </p>
+        <p>— Tammo</p>
+    </section>
+</Layout>
+
+<style>
+    .content {
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.6;
+        font-size: 1.1rem;
+        background: var(--paper);
+        padding: var(--spacing-lg);
+        border: var(--border-thick);
+        box-shadow: 8px 8px 0 var(--shadow);
+    }
+
+    .content h2 {
+        margin-top: 0;
+        margin-bottom: var(--spacing-md);
+        text-transform: uppercase;
+        border-bottom: 4px solid var(--ink);
+        display: inline-block;
+        font-size: 2rem;
+    }
+
+    .content h3 {
+        margin-top: var(--spacing-lg);
+        margin-bottom: var(--spacing-md);
+        font-size: 1.5rem;
+    }
+
+    .content p {
+        margin-bottom: var(--spacing-md);
+    }
+
+    .content a {
+        color: var(--accent);
+    }
+
+    code {
+        background: var(--marker);
+        padding: 0.2em 0.4em;
+        font-family: var(--font-mono);
+    }
+</style>

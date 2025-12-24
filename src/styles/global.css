@@ -47,6 +47,7 @@ p, h1, h2, h3, h4, h5, h6 {
   --accent: #ff00ff;
   --shadow: #666;
   --bg-color: #e0e0e0;
+  --marker: rgba(255, 255, 0, 0.2);
   
   /* Typography */
   --font-primary: "Space Mono", monospace;
