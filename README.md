@@ -104,4 +104,4 @@ Short description of why this blip exists.
 
 ## 📜 License
 
-[MIT](LICENSE)
+Code is licensed under [MIT](LICENSE). Content is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
