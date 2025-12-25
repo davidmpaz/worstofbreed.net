@@ -5,7 +5,7 @@ import Layout from "../layouts/Layout.astro";
 <Layout title="404: Service Discovery Failed">
     <div class="container">
         <div class="error-code">404</div>
-        <h1>Service Discovery Failed</h1>
+        <h2>Service Discovery Failed</h2>
 
         <p class="message">
             The requested resource has been successfully decoupled from our
@@ -47,6 +47,10 @@ import Layout from "../layouts/Layout.astro";
         padding: 4rem 2rem;
         max-width: 800px;
         margin: 0 auto;
+    }
+
+    .container h2 {
+        font-size: 2rem;
     }
 
     .error-code {
