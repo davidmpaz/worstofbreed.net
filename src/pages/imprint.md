@@ -3,8 +3,9 @@ layout: ../layouts/Layout.astro
 title: Imprint
 description: Legal notice (Imprint) for Worst of Breed.
 ---
+<section class="content">
 
-# Imprint
+## Imprint
 
 Tammo van Lessen  
 Nordstraße 18a  
@@ -12,3 +13,5 @@ Nordstraße 18a
 Germany  
 
 Email: info at worstofbreed dot net
+
+</section>
