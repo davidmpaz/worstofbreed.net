@@ -13,7 +13,7 @@ specialAbility:
 quote: "Serverless is the future! We have broken everything down into 300 nanoscopic functions. It scales infinitely!"
 tags: ["Architecture", "Serverless", "Cost"]
 dateAdded: 2025-12-21
-author: "vanto"
+contributor: "vanto"
 ---
 
 ## Analysis

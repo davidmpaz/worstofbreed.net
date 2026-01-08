@@ -13,7 +13,7 @@ specialAbility:
 quote: "We are replacing the entire marketing team and support with AI agents. What could go wrong?"
 tags: ["AI", "Content", "Ethics"]
 dateAdded: 2025-12-21
-author: "vanto"
+contributor: "vanto"
 ---
 
 ## Analysis

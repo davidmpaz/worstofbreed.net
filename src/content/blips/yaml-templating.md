@@ -6,7 +6,7 @@ x: 30
 y: 40
 edition: "2025"
 dateAdded: 2025-12-21
-author: "vanto"
+contributor: "vanto"
 ---
 One space decides it all.
 

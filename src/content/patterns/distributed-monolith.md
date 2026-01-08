@@ -13,7 +13,7 @@ specialAbility:
 quote: "Why call a method locally when you can send a synchronous HTTP request across three availability zones?"
 tags: ["Architecture", "Cost", "Maintenance"]
 dateAdded: 2025-12-21
-author: "vanto"
+contributor: "vanto"
 ---
 
 ## Analysis

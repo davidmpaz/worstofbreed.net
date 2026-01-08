@@ -39,7 +39,7 @@ specialAbility:
   description: "[1 sentence explaining what breaks.]"
 quote: "[A quote from the manager/dev justifying this bad decision.]"
 dateAdded: [YYYY-MM-DD]
-author: "[Your GitHub Handle]"
+contributor: "[Your GitHub Handle]"
 ---
 
 ## Analysis
@@ -77,7 +77,7 @@ x: [0-100]
 y: [0-100]
 edition: "[YYYY]"
 dateAdded: [YYYY-MM-DD]
-author: "[Your GitHub Handle]"
+contributor: "[Your GitHub Handle]"
 ---
 [Punchy, cynical summary of why this sucks. Max. 50 words. Short headline, then 1-2 sentences of why it's bad.]
 ```
@@ -103,7 +103,7 @@ specialAbility:
 quote: "IT was too slow. The controlling intern built this in an afternoon in VBA. It works great!"
 tags: ["Process", "Culture", "Shadow IT"]
 dateAdded: 2025-12-21
-author: "vanto"
+contributor: "vanto"
 ---
 
 ## Analysis
@@ -124,7 +124,7 @@ x: 5
 y: 10
 edition: "2025"
 dateAdded: 2025-12-21
-author: "vanto"
+contributor: "vanto"
 ---
 Agile Waterfall with extra meetings.
 

@@ -13,7 +13,7 @@ specialAbility:
 quote: "Why pull in a heavy dependency like 'jjwt' or 'jose'? Parsing a JWT is just splitting a string by dots and decoding Base64. Easy!"
 tags: ["Security", "JWT"]
 dateAdded: 2025-12-22
-author: vanto
+contributor: vanto
 ---
 
 ## Analysis

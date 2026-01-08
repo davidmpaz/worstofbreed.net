@@ -13,7 +13,7 @@ specialAbility:
 quote: "I don't understand the code, but I typed 'Make it work' and the error is gone. Deploy it!"
 tags: ["Culture", "AI", "Vibecoding"]
 dateAdded: 2025-12-21
-author: "vanto"
+contributor: "vanto"
 ---
 
 ## Analysis

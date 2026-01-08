@@ -82,21 +82,21 @@ const statusMap = {
                 <span class="meta-date">
                   DATE: {blip.dateAdded.toISOString().split("T")[0]}
                 </span>
-                {blip.author && (
-                  <div class="meta-author">
-                    <span>AUTHOR:</span>
+                {blip.contributor && (
+                  <div class="meta-contributor">
+                    <span>CONTRIBUTOR:</span>
                     <a
-                      href={`https://github.com/${blip.author}`}
+                      href={`https://github.com/${blip.contributor}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="author-link"
+                      class="contributor-link"
                     >
                       <img
-                        src={`https://github.com/${blip.author}.png`}
-                        alt={blip.author}
-                        class="author-avatar"
+                        src={`https://github.com/${blip.contributor}.png`}
+                        alt={blip.contributor}
+                        class="contributor-avatar"
                       />
-                      @{blip.author}
+                      @{blip.contributor}
                     </a>
                   </div>
                 )}
@@ -404,13 +404,13 @@ const statusMap = {
     color: #555;
   }
 
-  .meta-author {
+  .meta-contributor {
     display: flex;
     align-items: center;
     gap: 5px;
   }
 
-  .author-link {
+  .contributor-link {
     display: flex;
     align-items: center;
     gap: 6px;
@@ -419,12 +419,12 @@ const statusMap = {
     font-weight: bold;
   }
 
-  .author-link:hover {
+  .contributor-link:hover {
     text-decoration: underline;
     color: var(--accent);
   }
 
-  .author-avatar {
+  .contributor-avatar {
     width: 16px;
     height: 16px;
     border-radius: 50%;

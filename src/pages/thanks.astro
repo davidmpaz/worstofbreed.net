@@ -8,24 +8,24 @@ const blips = await getCollection("blips");
 const contributors = new Map<string, { patterns: number; blips: number }>();
 
 patterns.forEach((p) => {
-    if (p.data.author) {
-        const current = contributors.get(p.data.author) || {
+    if (p.data.contributor) {
+        const current = contributors.get(p.data.contributor) || {
             patterns: 0,
             blips: 0,
         };
         current.patterns++;
-        contributors.set(p.data.author, current);
+        contributors.set(p.data.contributor, current);
     }
 });
 
 blips.forEach((b) => {
-    if (b.data.author) {
-        const current = contributors.get(b.data.author) || {
+    if (b.data.contributor) {
+        const current = contributors.get(b.data.contributor) || {
             patterns: 0,
             blips: 0,
         };
         current.blips++;
-        contributors.set(b.data.author, current);
+        contributors.set(b.data.contributor, current);
     }
 });
 

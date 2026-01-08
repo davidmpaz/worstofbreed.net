@@ -13,7 +13,7 @@ specialAbility:
 quote: "We make a new version for every small change. That is 'agile' and 'backward compatible'."
 dateAdded: 2025-12-21
 tags: ["Architecture", "API", "Maintenance"]
-author: "vanto"
+contributor: "vanto"
 ---
 
 ## Analysis

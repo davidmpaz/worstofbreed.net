@@ -17,7 +17,7 @@ specialAbility:
   description: "The feature code is ready and tested in 2 days. The deployment waits 3 weeks because the 'Central Data Governance Board' meets only once a month."
 quote: "We love Microservices and Team Autonomy! But please submit your DDL statements as a PDF to the Central Modeling Team. They need to ensure it fits our global Enterprise Data Dictionary."
 dateAdded: 2025-12-22
-author: "vanto"
+contributor: "vanto"
 ---
 
 ## Analysis

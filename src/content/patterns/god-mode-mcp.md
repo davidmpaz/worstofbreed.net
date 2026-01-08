@@ -13,7 +13,7 @@ specialAbility:
 quote: "Installing MCP clients locally is too hard for our users. Let's host a central MCP server with root access to everything and just tunnel it over HTTP."
 tags: ["AI", "Architecture", "MCP"]
 dateAdded: 2025-12-22
-author: vanto
+contributor: vanto
 ---
 
 ## Analysis

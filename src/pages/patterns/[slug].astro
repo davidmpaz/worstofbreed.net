@@ -12,7 +12,7 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { title, dateAdded, tags, author } = entry.data;
+const { title, dateAdded, tags, contributor } = entry.data;
 const { Content } = await entry.render();
 
 const formattedDate = dateAdded.toISOString().split("T")[0];
@@ -40,21 +40,21 @@ const description =
                         <span>DATE: {formattedDate}</span>
                         <span>TAGS: {tags.join(", ")}</span>
                         {
-                            author && (
-                                <div class="author-row">
-                                    <span>AUTHOR:</span>
+                            contributor && (
+                                <div class="contributor-row">
+                                    <span>CONTRIBUTOR:</span>
                                     <a
-                                        href={`https://github.com/${author}`}
+                                        href={`https://github.com/${contributor}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        class="author-link"
+                                        class="contributor-link"
                                     >
                                         <img
-                                            src={`https://github.com/${author}.png`}
-                                            alt={author}
-                                            class="author-avatar"
+                                            src={`https://github.com/${contributor}.png`}
+                                            alt={contributor}
+                                            class="contributor-avatar"
                                         />
-                                        @{author}
+                                        @{contributor}
                                     </a>
                                 </div>
                             )
@@ -253,14 +253,14 @@ const description =
         gap: 5px;
     }
 
-    /* Author Styles */
-    .author-row {
+    /* Contributor Styles */
+    .contributor-row {
         display: flex;
         align-items: center;
         gap: 8px;
     }
 
-    .author-link {
+    .contributor-link {
         display: flex;
         align-items: center;
         gap: 6px;
@@ -269,12 +269,12 @@ const description =
         font-weight: bold;
     }
 
-    .author-link:hover {
+    .contributor-link:hover {
         text-decoration: underline;
         color: var(--accent);
     }
 
-    .author-avatar {
+    .contributor-avatar {
         width: 20px;
         height: 20px;
         border-radius: 50%;

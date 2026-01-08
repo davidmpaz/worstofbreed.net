@@ -20,7 +20,7 @@ const patternsCollection = defineCollection({
     quote: z.string(),
     dateAdded: date(),
     tags: z.array(z.string()),
-    author: z.string().optional(),
+    contributor: z.string().optional(),
   }),
 });
 
@@ -34,7 +34,7 @@ const blipsCollection = defineCollection({
     y: z.number(),
     dateAdded: date(),
     edition: z.string(),
-    author: z.string().optional(),
+    contributor: z.string().optional(),
   }),
 });
 

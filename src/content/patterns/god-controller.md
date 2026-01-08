@@ -13,7 +13,7 @@ specialAbility:
 quote: "Just put the logic in the 'OrderController' for now. We'll refactor it later. Promised."
 tags: ["Code", "Architecture", "Maintenance"]
 dateAdded: 2025-12-21
-author: "vanto"
+contributor: "vanto"
 ---
 
 ## Analysis

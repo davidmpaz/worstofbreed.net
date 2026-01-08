@@ -22,17 +22,17 @@ export async function GET(context) {
     description: 'The world\'s most questionable software patterns',
     site: context.site || 'https://worstofbreed.net',
     items: await Promise.all(patterns.map(async (post) => {
-      const { title, dateAdded, tags, author, quote, specialAbility } = post.data;
+      const { title, dateAdded, tags, contributor, quote, specialAbility } = post.data;
       const formattedDate = dateAdded.toISOString().split("T")[0];
       const tagsString = tags.join(", ");
       
-      let authorHtml = '';
-      if (author) {
-         authorHtml = `
+      let contributorHtml = '';
+      if (contributor) {
+         contributorHtml = `
             <div style="margin-top: 5px;">
-                <span style="font-weight: bold;">AUTHOR:</span> 
-                <a href="https://github.com/${author}" target="_blank" style="text-decoration:none; color:#000; font-weight:bold;">
-                    @${author}
+                <span style="font-weight: bold;">CONTRIBUTOR:</span> 
+                <a href="https://github.com/${contributor}" target="_blank" style="text-decoration:none; color:#000; font-weight:bold;">
+                    @${contributor}
                 </a>
             </div>`;
       }
@@ -50,7 +50,7 @@ export async function GET(context) {
             <div style="padding: 10px; background: #f0f0f0; border-bottom: 2px solid #000; font-size: 0.9em;">
                 <div>DATE: ${formattedDate}</div>
                 <div>TAGS: ${tagsString}</div>
-                ${authorHtml}
+                ${contributorHtml}
             </div>
              <div style="padding: 20px; line-height: 1.5;">
                 <div style="font-style: italic; border-left: 4px solid #ff00ff; padding-left: 10px; margin-bottom: 20px; background: #fafafa; padding: 10px;">
